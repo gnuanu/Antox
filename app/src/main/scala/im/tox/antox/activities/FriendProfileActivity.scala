@@ -20,7 +20,7 @@ class FriendProfileActivity extends AppCompatActivity {
     setContentView(R.layout.activity_friend_profile)
     friendKey = getIntent.getStringExtra("key")
     val db = new AntoxDB(this)
-    val friendDetails = db.getFriendDetails(friendKey)
+    val friendDetails = db.getContactDetails(friendKey)
     friendName = friendDetails(0)
     val friendAlias = friendDetails(1)
     val friendNote = friendDetails(2)

@@ -26,6 +26,7 @@ class AntoxOnFileReceiveCallback(ctx: Context) extends FileReceiveCallback {
       }
 
     if (kind == FileKind.AVATAR) {
+      println("new avatar")
       if (fileSize > Constants.MAX_AVATAR_SIZE){
         return
       } else if (fileSize == 0) {
@@ -41,10 +42,10 @@ class AntoxOnFileReceiveCallback(ctx: Context) extends FileReceiveCallback {
 
       val fileId = ToxSingleton.tox.fileGetFileId(friendNumber, fileNumber).toString
       val storedFileId = ToxSingleton.tox.hash(AVATAR.getAvatarFile(name, ctx).orNull).orNull
-      if (fileId.equals(storedFileId)) {
+      /*if (fileId.equals(storedFileId)) {
         ToxSingleton.tox.fileControl(friendNumber, fileNumber, ToxFileControl.CANCEL)
         return
-      }
+      } */
     }
 
     State.transfers.fileSendRequest(key,
